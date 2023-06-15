@@ -6,8 +6,12 @@ import android.view.ViewParent
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.contactsapp.databinding.ContactsListItemBinding
+import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
 class ContactAdapter(var contactList: List<ContactData>):RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+
+    //inflate binding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val binding =
             ContactsListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -20,7 +24,15 @@ class ContactAdapter(var contactList: List<ContactData>):RecyclerView.Adapter<Co
         binding.tvDisplayName.text = currentContact.displayName
         binding.tvPhoneNumber.text = currentContact.phoneNUmber
         binding.tvEmail.text = currentContact.email
-        binding.ivImage.setImageResource(currentContact.imageResId)
+        Picasso
+            .get()
+            .load(currentContact.image)
+            .resize(80,80)
+            .centerInside()
+            .transform(CropCircleTransformation())
+            .into(binding.ivImage)
+
+//        binding.ivImage.setImageResource(currentContact.image)
 
 
     }
