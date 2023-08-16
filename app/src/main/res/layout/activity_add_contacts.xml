@@ -5,7 +5,7 @@
     android:id="@+id/tvbtnAdd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddContacts">
+    tools:context=".ui.AddContacts">
 
     <ImageView
         android:id="@+id/ivImages"
@@ -40,7 +40,7 @@
             android:id="@+id/etfirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter first name" />
+            android:hint="Enter first Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -60,7 +60,7 @@
             android:id="@+id/etsecondName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter second name" />
+            android:hint="Enter_second_name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -80,7 +80,7 @@
             android:id="@+id/etphoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="PhoneNumber" />
+            android:hint="@string/phonenumber" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -100,7 +100,7 @@
             android:id="@+id/etemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="E-mail" />
+            android:hint="@string/e_mail" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -111,7 +111,7 @@
         android:layout_marginTop="82dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="27dp"
-        android:text="Button"
+        android:text="@string/button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

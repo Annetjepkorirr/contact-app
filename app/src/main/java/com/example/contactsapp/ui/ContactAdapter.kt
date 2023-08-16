@@ -1,15 +1,16 @@
-package com.example.contactsapp
+package com.example.contactsapp.ui
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.ViewParent
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.contactsapp.models.ContactData
 import com.example.contactsapp.databinding.ContactsListItemBinding
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
-class ContactAdapter(var contactList: List<ContactData>):RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+class ContactAdapter(var contactList: List<ContactData>, val context: Context):RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
     //inflate binding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
@@ -22,18 +23,24 @@ class ContactAdapter(var contactList: List<ContactData>):RecyclerView.Adapter<Co
         val currentContact = contactList.get(position)
         val binding = holder.binding
         binding.tvDisplayName.text = currentContact.displayName
-        binding.tvPhoneNumber.text = currentContact.phoneNUmber
+        binding.tvPhoneNumber.text = currentContact.phoneNumber
         binding.tvEmail.text = currentContact.email
-        Picasso
-            .get()
-            .load(currentContact.image)
-            .resize(80,80)
-            .centerInside()
-            .transform(CropCircleTransformation())
-            .into(binding.ivImage)
+        if (currentContact.image.isNotBlank()) {
+            Picasso
+                .get()
+                .load(currentContact.image)
+                .resize(80, 80)
+                .centerInside()
+                .transform(CropCircleTransformation())
+                .into(binding.ivImage)
 
 //        binding.ivImage.setImageResource(currentContact.image)
-
+        }
+        binding.cvContact.setOnClickListener{
+            val intent = Intent(context,ContactDetailsActivity::class.java)
+            intent.putExtra("CONTACT_ID", currentContact.contactId)
+            context.startActivity(intent)
+        }
 
     }
 

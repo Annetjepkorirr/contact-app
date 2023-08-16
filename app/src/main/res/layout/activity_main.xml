@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tvcontact"
+        android:id="@+id/cvContact"
         android:layout_width="300dp"
         android:layout_height="500dp"
         android:layout_marginStart="16dp"
